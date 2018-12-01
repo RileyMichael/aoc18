@@ -12,16 +12,17 @@ class App {
 
         DAYS.each { day ->
             final def input = loadInputForDay(day.key)
+            println("Day ${day.key} -")
             day.value.with {
-                part1(input)
-                part2(input)
+                println("\tPart1: ${part1(input)}")
+                println("\tPart2: ${part2(input)}")
             }
         }
     }
 
     private static loadInputForDay(String day) {
         try {
-            getClass().getResource("/impl${day}.txt").readLines()
+            getClass().getResource("/Day${day}.txt").readLines()
         } catch (IOException | NullPointerException ex) {
             throw new IOException(ex)
         }
