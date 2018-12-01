@@ -10,6 +10,15 @@ class Day01 implements AoCDay {
 
     @Override
     def part2(List<String> input) {
-        return null
+        def sum = 0
+        def seen = [0] as HashSet<Integer>
+
+        while (true) {
+            for (num in input) {
+                sum += num as Integer
+                if (!seen.add(sum))
+                    return sum
+            }
+        }
     }
 }
