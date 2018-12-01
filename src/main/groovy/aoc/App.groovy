@@ -14,7 +14,7 @@ class App {
             final def input = loadInputForDay(day.key)
             day.value.with {
                 part1(input)
-                print(part2(input))
+                part2(input)
             }
         }
     }
