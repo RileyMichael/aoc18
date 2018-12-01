@@ -1,4 +1,4 @@
-package aoc.day
+package aoc.impl
 
 import aoc.AoCDay
 

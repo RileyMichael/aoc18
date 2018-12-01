@@ -1,6 +1,6 @@
 package aoc
 
-import aoc.day.Day01
+import aoc.impl.Day01
 import spock.lang.Specification
 
 class Day01Test extends Specification {
