@@ -22,6 +22,17 @@ class Day02 implements AoCDay {
 
     @Override
     def part2(List<String> input) {
-        return null
+        def result = ""
+        def data = [] as Set
+
+        // could exit iter early.. ahh groovy
+        input.each { line ->
+            line.eachWithIndex { c, i ->
+                def string = line.substring(0, i) + "*" + line.substring(i + 1, line.length())
+                if (!data.add(string))
+                    result = string - "*"
+            }
+        }
+        return result
     }
 }
