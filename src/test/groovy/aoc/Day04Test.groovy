@@ -32,4 +32,15 @@ class Day04Test extends Specification {
         input       |   output
         testInput   |   240
     }
+
+
+    def "Part 2"(List<String> input, int output) {
+        expect:
+        new Day04().part2(input) == output
+
+        where:
+
+        input       |   output
+        testInput   |   4455
+    }
 }

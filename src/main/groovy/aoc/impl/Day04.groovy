@@ -8,14 +8,18 @@ class Day04 implements AoCDay {
     def part1(List<String> input) {
         final def guards = parseInput(input)
         def sleepiest = guards.values().max { it.total }
-        def sleepiestMinute = sleepiest.sleepTime.findIndexOf { it == GroovyCollections.max(sleepiest.sleepTime)}
+        def sleepiestMinute = sleepiest.highestMinute
 
         return sleepiestMinute * sleepiest.id
     }
 
     @Override
     def part2(List<String> input) {
-        return null
+        final def guards = parseInput(input)
+        def sleepiest = guards.values().max { it.highestFreq }
+        def sleepiestMinute = sleepiest.highestMinute
+
+        return sleepiestMinute * sleepiest.id
     }
 
     static def parseInput(List<String> input) {
@@ -47,5 +51,13 @@ class Day04 implements AoCDay {
         int id
         int[] sleepTime = new int[60]
         int total
+
+        def getHighestMinute() {
+            sleepTime.findIndexOf { it == highestFreq}
+        }
+
+        def getHighestFreq() {
+            GroovyCollections.max(sleepTime)
+        }
     }
 }
