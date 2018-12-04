@@ -29,7 +29,13 @@ class Day03 implements AoCDay {
 
     @Override
     def part2(List<String> input) {
-        return null
+        final def claims = parseClaims(input)
+
+        for (claim in claims) {
+            def any = claims.any { it != claim && it.intersect(claim) }
+            if (!any)
+                return claim.id
+        }
     }
 
     static def parseClaims(List<String> input) {
@@ -38,12 +44,14 @@ class Day03 implements AoCDay {
             matches[0].with { new Claim(id: it[1] as String, x: it[2] as int, y: it[3] as int, width: it[4] as int, height: it[5] as int) }
         }
     }
-
-
     static final class Claim {
         String id
         int x, y, width, height
         @Lazy int x2 = x + width
         @Lazy int y2 = y + height
+
+        boolean intersect(Claim claim) {
+            return (x2 > claim.x && x < claim.x2 && y2 > claim.y && y < claim.y2)
+        }
     }
 }
